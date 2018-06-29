@@ -17,5 +17,5 @@ node github.js --repo=octokitTest --title='test pr' --head=master --base=mzbac-p
 ```
 docker build -t githubjs .
 
-docker run -it --rm  friendlyhello node github.js --repo=octokitTest --title='test pr' --head=master --base=mzbac-patch-1 --bodyMsg=test
+docker run -it --rm  githubjs node github.js --repo=octokitTest --title='test pr' --head=master --base=mzbac-patch-1 --bodyMsg=test
 ```
