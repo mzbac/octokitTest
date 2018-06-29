@@ -1,3 +1,5 @@
+const argv = require("yargs").argv;
+
 const octokit = require("@octokit/rest")({
   timeout: 0,
   headers: {
@@ -13,17 +15,17 @@ octokit.authenticate({
 octokit.pullRequests
   .create({
     owner: "mzbac",
-    repo: "octokitTest",
-    title: "test pr",
-    head: "test1",
-    base: "master",
-    body: "test"
+    repo: argv.repo,
+    title: argv.title,
+    head: argv.head,
+    base: argv.base,
+    body: argv.bodyMsg
   })
   .then(result => {
     console.log(result.data.number);
     octokit.pullRequests.merge({
       owner: "mzbac",
-      repo: "octokitTest",
+      repo: argv.repo,
       number: result.data.number
     });
   })
